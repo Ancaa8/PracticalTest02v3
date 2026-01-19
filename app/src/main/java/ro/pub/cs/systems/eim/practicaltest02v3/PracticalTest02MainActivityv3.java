@@ -29,6 +29,8 @@ public class PracticalTest02MainActivityv3 extends AppCompatActivity {
 
     int port_number;
 
+    String address_number;
+
 
 
     @Override
@@ -53,6 +55,7 @@ public class PracticalTest02MainActivityv3 extends AppCompatActivity {
 
         connect.setOnClickListener(v -> {
             port_number= Integer.parseInt(port.getText().toString());
+            address_number = address.getText().toString();
             serverThread = new ServerThread(port_number);
             serverThread.start();
         });
@@ -71,14 +74,14 @@ public class PracticalTest02MainActivityv3 extends AppCompatActivity {
                 return;
             }
 
-//            ClientThread clientThread = new ClientThread(
-//                    "127.0.0.1",
-//                    port_number,
-//                    w,
-//                    result
-//            );
-//
-//            clientThread.start();
+            ClientThread clientThread = new ClientThread(
+                    address_number,
+                    port_number,
+                    w,
+                    result
+            );
+
+            clientThread.start();
         });
 
 
